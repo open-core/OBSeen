@@ -1,0 +1,45 @@
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\bin\Debug\OrganisationBitches.exe.config
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\bin\Debug\OrganisationBitches.exe
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\bin\Debug\OrganisationBitches.pdb
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.csprojResolveAssemblyReference.cache
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\Pages\pagExerciseView.baml
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\winMainView.baml
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\Pages\pagExerciseView.g.cs
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\winMainView.g.cs
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\App.g.cs
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches_MarkupCompile.cache
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.g.resources
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.Properties.Resources.resources
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.csproj.GenerateResource.Cache
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.exe
+T:\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.pdb
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\bin\Debug\OrganisationBitches.exe.config
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.exe
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.pdb
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\bin\Debug\OrganisationBitches.exe
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\bin\Debug\OrganisationBitches.pdb
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\Pages\pagExerciseView.baml
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\winMainView.baml
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\Pages\pagExerciseView.g.cs
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\Pages\pagMealsView.g.cs
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\winMainView.g.cs
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\App.g.cs
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches_MarkupCompile.cache
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches_MarkupCompile.lref
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\Pages\pagMealsView.baml
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.g.resources
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.Properties.Resources.resources
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.csproj.GenerateResource.Cache
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\bin\Debug\MySql.Data.dll
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\bin\Debug\MySql.Web.dll
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\bin\Debug\MySql.Web.xml
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\Resources\dictStyles.baml
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\App.baml
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\Pages\pagTimesheetView.g.cs
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\Pages\pagTimesheetView.baml
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.csprojResolveAssemblyReference.cache
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\bin\Debug\Dapper.dll
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\bin\Debug\Dapper.xml
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\Pages\pagPersonsView.g.cs
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\Pages\pagPersonsView.baml
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\GeneratedInternalTypeHelper.g.cs
