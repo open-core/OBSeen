@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OrganisationBitches.Models;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace OrganisationBitches.ViewModels
 {
@@ -22,6 +23,7 @@ namespace OrganisationBitches.ViewModels
         public static event EventHandler SelectedExerciseChartChanged;
         public static event EventHandler UserChanged;
         public static event EventHandler TimesheetEntriesChanged;
+        public static event EventHandler SelectedTimesheetEntryChanged;
 
         #endregion
 
@@ -47,6 +49,8 @@ namespace OrganisationBitches.ViewModels
         public static ObservableCollection<PersonModel> ocPersons { get; set; }
 
         public static ObservableCollection<TimesheetEntryModel> ocTimesheetEntires { get; set; }
+
+        public static TimesheetEntryModel teSelectedTimesheetEntry { get; set; }
 
         public static PersonModel pmSelectedPerson { get; set; }
 
@@ -75,7 +79,7 @@ namespace OrganisationBitches.ViewModels
 
         private static void GetAllTimesheetEntriesForPerson()
         {
-            string strQuery = "SELECT t.ID, t.ClockIn, t.ClockOut, t.UnpaidTime UnpaidTimeSpanTicks, t.PaidTime PaidTimeSpanTicks FROM TimesheetEntries t WHERE PersonID = @ID; ";
+            string strQuery = "SELECT t.ID, t.ClockIn, t.ClockOut, t.UnpaidTime UnpaidTimeSpanTicks, t.PaidTime PaidTimeSpanTicks, t.BreakStart BreakStart FROM TimesheetEntries t WHERE PersonID = @ID; ";
             var queryResults = DatabaseModel.Query<TimesheetEntryModel>(strQuery, pmSelectedPerson);
             if (queryResults != null)
             {
@@ -233,12 +237,62 @@ namespace OrganisationBitches.ViewModels
 
         public static void StopBreak()
         {
-            throw new NotImplementedException();
+            // Check that there is currently a user selected (If Binding is working, this should never be a problem)
+            if (pmSelectedPerson != null)
+            {
+                // Check for any unfinished breaks
+                var breaks = ocTimesheetEntires.Where(x => x.BreakStart != null && x.ClockIn != null && x.ClockOut == null).ToList();
+                // If there is an Unfinished break, end it
+                if(breaks != null && breaks.Count > 0)
+                {
+                    foreach (var b in breaks)
+                    {
+                        // Get the time for the end of the break
+                        DateTime breakEnd = DateTime.Now;
+                        if (b.UnpaidTime == null)
+                            b.UnpaidTime = b.UnpaidTime.GetValueOrDefault();
+                        // Update unpaid time for current entry
+                        b.UnpaidTime += breakEnd - b.BreakStart;
+                        // Set BreakStart to null so another break can be started if needed
+                        b.BreakStart = null;
+                    }
+                    // Update Entries in DB
+                    UpdateTimesheetEntries(breaks);
+                }
+            }
         }
 
         public static void StartBreak()
         {
-            throw new NotImplementedException();
+            // Check that there is currently a user selected (If Binding is working, this should never be a problem)
+            if(pmSelectedPerson != null)
+            {
+                // Check for any unfinished breaks
+                var breaks = ocTimesheetEntires.Where(x => x.BreakStart != null && x.ClockIn != null && x.ClockOut == null).ToList();
+                // If there aren't any unfinished breaks, start a new one
+                if (breaks == null || breaks.Count == 0)
+                {
+                    // Check there is a selected Timesheet Entry to apply a break to
+                    if (teSelectedTimesheetEntry != null && teSelectedTimesheetEntry.ID != 0)
+                    {
+                        // Set Start of break to now
+                        teSelectedTimesheetEntry.BreakStart = DateTime.Now;
+                        // Update Entry in DB
+                        UpdateTimesheetEntry(teSelectedTimesheetEntry);
+                    }
+                }
+            }
+        }
+
+        public static void UpdateSelectedTimesheetEntry(TimesheetEntryModel selectedEntry)
+        {
+            teSelectedTimesheetEntry = selectedEntry;
+
+            // Invoke Event so all views can be updated
+            if(SelectedTimesheetEntryChanged != null)
+            {
+                SelectedTimesheetEntryChanged.Invoke();
+            }
         }
 
         #endregion
@@ -249,6 +303,8 @@ namespace OrganisationBitches.ViewModels
         {
             // Implement Messenger Later
             Console.WriteLine("EXCEPTION THROWN: " + ErrorLogException.Message);
+
+            MessageBox.Show("An Error Occurred: " + ErrorLogException.Message);
         }
 
         #endregion

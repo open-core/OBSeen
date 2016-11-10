@@ -53,11 +53,18 @@ namespace OrganisationBitches.Views.Pages
         {
             ocTimeSheet = DataHandler.ocTimesheetEntires;
             DataHandler.TimesheetEntriesChanged += new ViewModels.EventHandler(TimesheetEntriesChangedHandler);
+            dgTimesheets.SelectedItem = DataHandler.teSelectedTimesheetEntry;
+            DataHandler.SelectedTimesheetEntryChanged += new ViewModels.EventHandler(SelectedTimesheetEntryChanged);
         }
 
         private void TimesheetEntriesChangedHandler()
         {
             ocTimeSheet = DataHandler.ocTimesheetEntires;
+        }
+
+        private void SelectedTimesheetEntryChanged()
+        {
+            dgTimesheets.SelectedItem = DataHandler.teSelectedTimesheetEntry;
         }
 
         #region Click Event Handlers
@@ -85,5 +92,10 @@ namespace OrganisationBitches.Views.Pages
         #endregion
 
         #endregion
+
+        private void dgTimesheets_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataHandler.UpdateSelectedTimesheetEntry(dgTimesheets.SelectedItem as TimesheetEntryModel);
+        }
     }
 }

@@ -100,5 +100,18 @@ namespace OrganisationBitches.Models
                     PaidTime = new TimeSpan((long)value);
             }
         }
+
+        private DateTime? _breakStart;
+
+        public DateTime? BreakStart
+        {
+            get { return _breakStart; }
+            set
+            {
+                _breakStart = value;
+                OnPropertyChanged("BreakStart");
+            }
+        }
+
     }
 }

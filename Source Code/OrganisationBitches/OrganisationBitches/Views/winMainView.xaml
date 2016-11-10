@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:conv="clr-namespace:OrganisationBitches.ViewModels"
         xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
-        Background="#222222"
+        Background="#222222" WindowStartupLocation="CenterOwner"
         Title="OrganisationBitches" Loaded="Window_Loaded" Height="768" Width="1024">
     <Window.Resources>
         <conv:NullToBoolConverter x:Key="NullToBool"/>

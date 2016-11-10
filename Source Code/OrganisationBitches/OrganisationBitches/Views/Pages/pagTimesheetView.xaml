@@ -27,7 +27,8 @@
                 Clock Out
             </Button>
         </UniformGrid>
-        <DataGrid Grid.Row="1" Margin="10" DataContext="{Binding RelativeSource={RelativeSource AncestorType=Page}}" ItemsSource="{Binding ocTimeSheet}">
+        <DataGrid Name="dgTimesheets" Grid.Row="1" Margin="10" DataContext="{Binding RelativeSource={RelativeSource AncestorType=Page}}" 
+                  ItemsSource="{Binding ocTimeSheet}" SelectionMode="Single" SelectionChanged="dgTimesheets_SelectionChanged">
             
         </DataGrid>
     </Grid>
