@@ -43,3 +43,6 @@ C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\Or
 C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\Pages\pagPersonsView.g.cs
 C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\Views\Pages\pagPersonsView.baml
 C:\Users\Open Core\Documents\Projects\OrganisationBitches\OrganisationBitches\OrganisationBitches\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\Source Code\OrganisationBitches\OrganisationBitches\bin\Debug\OrganisationBitches.exe.config
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\Source Code\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.exe
+C:\Users\Open Core\Documents\Projects\OrganisationBitches\Source Code\OrganisationBitches\OrganisationBitches\obj\Debug\OrganisationBitches.pdb
