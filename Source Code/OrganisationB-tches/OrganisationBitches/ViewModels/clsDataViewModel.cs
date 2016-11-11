@@ -149,7 +149,7 @@ namespace OrganisationBitches.ViewModels
 
         #endregion
 
-            #region Public Methods
+        #region Public Methods
 
         public static void Initialise()
         {

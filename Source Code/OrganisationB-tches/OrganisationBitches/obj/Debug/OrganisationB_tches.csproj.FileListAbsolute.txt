@@ -27,3 +27,4 @@ C:\Users\Open Core\Documents\Projects\OrganisationB-tches\Source Code\Organisati
 C:\Users\Open Core\Documents\Projects\OrganisationB-tches\Source Code\OrganisationB-tches\OrganisationBitches\obj\Debug\OrganisationBitches.g.resources
 C:\Users\Open Core\Documents\Projects\OrganisationB-tches\Source Code\OrganisationB-tches\OrganisationBitches\obj\Debug\OrganisationBitches.Properties.Resources.resources
 C:\Users\Open Core\Documents\Projects\OrganisationB-tches\Source Code\OrganisationB-tches\OrganisationBitches\obj\Debug\OrganisationB_tches.csproj.GenerateResource.Cache
+C:\Users\Open Core\Documents\Projects\OrganisationB-tches\Source Code\OrganisationB-tches\OrganisationBitches\obj\Debug\OrganisationB_tches.csprojResolveAssemblyReference.cache

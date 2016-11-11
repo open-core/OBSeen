@@ -14,11 +14,54 @@
             <RowDefinition Height="6*"/>
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+        <ListBox Name="lbxPageNavigation" SelectionMode="Single" Grid.Row="0" ItemsSource="{Binding ocPages}" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                 SelectionChanged="ListBox_SelectionChanged" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="Transparent"
+                     DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}">
+            <ListBox.Style>
+                <Style TargetType="ListBox">
+                    <Setter Property="Visibility" Value="Hidden"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SelectedItem, ElementName=cbxPersons, Converter={StaticResource NullToBool}, diag:PresentationTraceSources.TraceLevel=High}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.Style>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border Name="_Border"
+                                Padding="2"
+                                SnapsToDevicePixels="true">
+                                    <ContentPresenter />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="true">
+                                        <Setter TargetName="_Border" Property="Background" Value="#FF1e8acb"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="4" Background="Transparent"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Style="{StaticResource styBorderStandard}" Background="Transparent" HorizontalAlignment="Stretch" Margin="10">
+                        <TextBlock Text="{Binding Title}" Style="{StaticResource styTextBlockStandard}" Background="Transparent" HorizontalAlignment="Center"/>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <!--
             <UniformGrid Grid.Row="0" Columns="3" DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}">
                 <UniformGrid.Style>
                     <Style TargetType="UniformGrid">
@@ -34,11 +77,7 @@
                 <Button Name="btnExercise" Style="{StaticResource styButtonStandard}" Click="btnExercise_Click">Fitness</Button>
                 <Button Name="btnPersons" Style="{StaticResource styButtonStandard}" Click="btnPersons_Click">People</Button>
             </UniformGrid>
-            <Label Grid.Row="1" Style="{StaticResource styLabelSmall}" Margin="0"
-                   DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=Window}}"
-                   Content="{Binding Content.Title ,ElementName=frmMain, diag:PresentationTraceSources.TraceLevel=High}">
-            </Label>
-        </Grid>
+            -->
         <Frame Name="frmMain" Grid.Row="1" NavigationUIVisibility="Hidden"/>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
             <Label Style="{StaticResource styLabelSmall}">User</Label>

@@ -28,8 +28,38 @@
             </Button>
         </UniformGrid>
         <DataGrid Name="dgTimesheets" Grid.Row="1" Margin="10" DataContext="{Binding RelativeSource={RelativeSource AncestorType=Page}}" 
-                  ItemsSource="{Binding ocTimeSheet}" SelectionMode="Single" SelectionChanged="dgTimesheets_SelectionChanged">
-            
+                  ItemsSource="{Binding ocTimeSheet}" SelectionMode="Single" SelectionChanged="dgTimesheets_SelectionChanged"
+                  AutoGenerateColumns="False" HorizontalContentAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Clock In" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <UniformGrid Columns="2">
+                                <TextBlock Text="{Binding ClockIn.DayOfWeek}"/>
+                                <TextBlock Text="{Binding ClockIn, StringFormat=g}" Padding="0,0,10,0"/>
+                            </UniformGrid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Clock Out" Binding="{Binding ClockOut, StringFormat=t}" Width="*"/>
+                <DataGridTextColumn Header="Paid Time" Width="*">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0}:{1}">
+                            <Binding Path="PaidTime.Hours"/>
+                            <Binding Path="PaidTime.Minutes"/>
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Unpaid Time" Width="*">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding StringFormat="{}{0}:{1}">
+                            <Binding Path="UnpaidTime.Hours"/>
+                            <Binding Path="UnpaidTime.Minutes"/>
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Currently On Break" Binding="{Binding BreakStart, StringFormat=t}" Width="*"/>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Page>

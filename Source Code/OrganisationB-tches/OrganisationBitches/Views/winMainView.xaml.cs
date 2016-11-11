@@ -37,6 +37,12 @@ namespace OrganisationBitches.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            // Add Pages to Pages List
+            ocPages = new ObservableCollection<Page>();
+            ocPages.Add(pgTimesheetView);
+            ocPages.Add(pgExerciseView);
+            ocPages.Add(pgPersonsView);
+
             // Subscribed to UserChangedEvent
             DataHandler.UserChanged += new ViewModels.EventHandler(PersonsChangedHandler);
             // Initialise DataHandler
@@ -58,6 +64,19 @@ namespace OrganisationBitches.Views
         #endregion
 
         #region Dependency Properties
+
+
+
+        public ObservableCollection<Page> ocPages
+        {
+            get { return (ObservableCollection<Page>)GetValue(ocPagesProperty); }
+            set { SetValue(ocPagesProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ocPages.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ocPagesProperty =
+            DependencyProperty.Register("ocPages", typeof(ObservableCollection<Page>), typeof(winMainView), new PropertyMetadata(null));
+
 
 
 
@@ -110,6 +129,14 @@ namespace OrganisationBitches.Views
         private void PersonsChangedHandler()
         {
             ocPersons = DataHandler.ocPersons;
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(lbxPageNavigation.SelectedItem != null)
+            {
+                frmMain.Navigate(lbxPageNavigation.SelectedItem);
+            }
         }
 
         #endregion
