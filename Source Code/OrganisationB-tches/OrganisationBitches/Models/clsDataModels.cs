@@ -43,6 +43,33 @@ namespace OrganisationBitches.Models
             }
         }
 
+        private int _userLevelID;
+
+        public int UserLevelID
+        {
+            get { return _userLevelID; }
+            set
+            {
+                _userLevelID = value;
+                OnPropertyChanged("UserLevelID");
+            }
+        }
+
+        private UserLevelModel _userLevel;
+
+        public UserLevelModel UserLevel
+        {
+            get { return _userLevel; }
+            set
+            {
+                _userLevel = value;
+                UserLevelID = value.ID;
+                OnPropertyChanged("UserLevel");
+            }
+        }
+
+
+
         protected void OnPropertyChanged(string name)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -51,6 +78,19 @@ namespace OrganisationBitches.Models
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
+    }
+
+    public class UserLevelModel
+    {
+        public int ID { get; set; }
+
+        public string UserLevelName { get; set; }
+
+        public bool CanViewAllUsersData { get; set; }
+
+        public bool CanEditAllUsersData { get; set; }
+
+        public bool HasSetupPrivileges { get; set; }
     }
 
     public static class DatabaseModel

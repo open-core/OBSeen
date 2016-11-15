@@ -81,6 +81,9 @@
     <Compile Include="Views\Pages\pagTimesheetView.xaml.cs">
       <DependentUpon>pagTimesheetView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Pages\pagTodoView.xaml.cs">
+      <DependentUpon>pagTodoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\winMainView.xaml.cs">
       <DependentUpon>winMainView.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\pagTimesheetView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\pagTodoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,6 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Assets\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

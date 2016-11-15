@@ -9,10 +9,6 @@ using System.Windows;
 
 namespace OrganisationBitches.ViewModels
 {
-    class clsDataViewModel
-    {
-    }
-
     public delegate void EventHandler();
 
     public static class DataHandler
@@ -46,6 +42,8 @@ namespace OrganisationBitches.ViewModels
 
         public static ExerciseChartModel ecSelectedChart { get; set; }
 
+        public static ObservableCollection<UserLevelModel> ocUserLevels { get; set; }
+
         public static ObservableCollection<PersonModel> ocPersons { get; set; }
 
         public static ObservableCollection<TimesheetEntryModel> ocTimesheetEntires { get; set; }
@@ -65,11 +63,23 @@ namespace OrganisationBitches.ViewModels
             
         }
 
+        private static void GetUserLevels()
+        {
+            string strQuery = "SELECT * FROM UserLevels";
+            var results = DatabaseModel.Query<UserLevelModel>(strQuery);
+            ocUserLevels = new ObservableCollection<UserLevelModel>(results);
+        }
+
         private static void GetPersons()
         {
             string strQuery = "SELECT * FROM Persons";
             var results = DatabaseModel.Query<PersonModel>(strQuery);
             ocPersons = new ObservableCollection<PersonModel>(results);
+
+            foreach (var p in ocPersons)
+            {
+                p.UserLevel = ocUserLevels.FirstOrDefault(x => x.ID == p.UserLevelID);
+            }
 
             if (UserChanged != null)
             {
@@ -153,6 +163,8 @@ namespace OrganisationBitches.ViewModels
 
         public static void Initialise()
         {
+            GetUserLevels();
+
             GetPersons();
 
             GetAllData();
