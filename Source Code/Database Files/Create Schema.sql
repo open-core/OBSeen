@@ -105,8 +105,28 @@ CREATE TABLE `Persons` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `LastName` varchar(45) NOT NULL,
   `FirstName` varchar(45) NOT NULL,
-  PRIMARY KEY (`ID`)
+  `UserLevelID` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_UserLevel_idx` (`UserLevelID`),
+  CONSTRAINT `fk_UserLevelsPersons` FOREIGN KEY (`UserLevelID`) REFERENCES `UserLevels` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `UserLevels`
+--
+
+DROP TABLE IF EXISTS `UserLevels`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `UserLevels` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `UserLevelName` varchar(45) NOT NULL,
+  `CanViewAllUsersData` bit(1) NOT NULL,
+  `CanEditAllUsersData` bit(1) NOT NULL,
+  `HasSetupPrivileges` bit(1) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
