@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrganisationBitches.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,45 @@ namespace OrganisationBitches.Views.Pages
         public pagMealsView()
         {
             InitializeComponent();
+            DataContext = this;
         }
+
+        #region Dependency Properties
+        
+        public bool PageVisible
+        {
+            get { return (bool)GetValue(PageVisibleProperty); }
+            set { SetValue(PageVisibleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for PageVisible.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PageVisibleProperty =
+            DependencyProperty.Register("PageVisible", typeof(bool), typeof(pagMealsView), new PropertyMetadata(false));
+        
+        #endregion
+
+
+
+        #region Event Handlers
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataHandler.UserChanged += new ViewModels.EventHandler(UserChanged);
+            UserChanged();
+        }
+
+        private void UserChanged()
+        {
+            if (DataHandler.pmSelectedPerson != null)
+            {
+                PageVisible = true;
+            }
+            else
+            {
+                PageVisible = false;
+            }
+        }
+
+        #endregion
     }
 }

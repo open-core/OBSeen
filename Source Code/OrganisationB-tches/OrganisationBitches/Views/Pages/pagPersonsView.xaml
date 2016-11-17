@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:OrganisationBitches.Views.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="600" d:DesignWidth="800"
-      Title="People">
+      Title="People" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>

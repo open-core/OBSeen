@@ -25,6 +25,7 @@ namespace OrganisationBitches.Views.Pages
         public pagExerciseView()
         {
             InitializeComponent();
+            DataContext = this;
         }
 
         #region Page Element Event Handlers
@@ -70,11 +71,40 @@ namespace OrganisationBitches.Views.Pages
         {
             ChartDate = DataHandler.dtExerciseDate;
             dpChartDate.SelectedDate = ChartDate;
+
+            DataHandler.UserChanged += new ViewModels.EventHandler(UserChanged);
+            UserChanged();
+        }
+
+        private void UserChanged()
+        {
+            if (DataHandler.pmSelectedPerson != null)
+            {
+                PageVisible = true;
+            }
+            else
+            {
+                PageVisible = false;
+            }
         }
 
         #endregion
 
         #region Dependency Properties
+
+
+
+        public bool PageVisible
+        {
+            get { return (bool)GetValue(PageVisibleProperty); }
+            set { SetValue(PageVisibleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for PageVisible.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PageVisibleProperty =
+            DependencyProperty.Register("PageVisible", typeof(bool), typeof(pagExerciseView), new PropertyMetadata(false));
+
+
 
         public DateTime? ChartDate
         {

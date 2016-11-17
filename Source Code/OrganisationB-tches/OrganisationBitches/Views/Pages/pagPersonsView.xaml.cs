@@ -1,4 +1,5 @@
 ﻿using OrganisationBitches.Models;
+using OrganisationBitches.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -44,6 +45,18 @@ namespace OrganisationBitches.Views.Pages
 
 
 
+        public bool PageVisible
+        {
+            get { return (bool)GetValue(PageVisibleProperty); }
+            set { SetValue(PageVisibleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for PageVisible.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PageVisibleProperty =
+            DependencyProperty.Register("PageVisible", typeof(bool), typeof(pagPersonsView), new PropertyMetadata(false));
+
+
+
         public PersonModel SelectedPerson
         {
             get { return (PersonModel)GetValue(SelectedPersonProperty); }
@@ -69,6 +82,27 @@ namespace OrganisationBitches.Views.Pages
 
 
         #endregion
+
+        #region Event Handlers
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            DataHandler.UserChanged += new ViewModels.EventHandler(UserChanged);
+            UserChanged();
+        }
+
+        private void UserChanged()
+        {
+            if (DataHandler.pmSelectedPerson != null)
+            {
+                PageVisible = DataHandler.pmSelectedPerson.UserLevel.CanEditAllUsersData;
+            }
+            else
+            {
+                PageVisible = false;
+            }
+        }
+
 
         #region Click Events
 
@@ -98,5 +132,8 @@ namespace OrganisationBitches.Views.Pages
         }
 
         #endregion
+
+        #endregion
+
     }
 }

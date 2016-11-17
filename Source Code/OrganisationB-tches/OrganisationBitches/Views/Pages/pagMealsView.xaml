@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:OrganisationBitches.Views.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="Meal Planner">
+      Title="Meal Planner" Loaded="Page_Loaded">
 
     <Grid>
         

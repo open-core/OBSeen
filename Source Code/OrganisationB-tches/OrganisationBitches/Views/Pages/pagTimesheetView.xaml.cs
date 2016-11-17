@@ -42,7 +42,32 @@ namespace OrganisationBitches.Views.Pages
         // Using a DependencyProperty as the backing store for ocTimeSheet.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ocTimeSheetProperty =
             DependencyProperty.Register("ocTimeSheet", typeof(ObservableCollection<TimesheetEntryModel>), typeof(pagTimesheetView), new PropertyMetadata(new ObservableCollection<TimesheetEntryModel>()));
-        
+
+
+
+        public bool PageVisible
+        {
+            get { return (bool)GetValue(PageVisibleProperty); }
+            set { SetValue(PageVisibleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for PageVisible.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PageVisibleProperty =
+            DependencyProperty.Register("PageVisible", typeof(bool), typeof(pagTimesheetView), new PropertyMetadata(false));
+
+
+
+        public bool CanEditEntries
+        {
+            get { return (bool)GetValue(CanEditEntriesProperty); }
+            set { SetValue(CanEditEntriesProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CanEditEntries.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CanEditEntriesProperty =
+            DependencyProperty.Register("CanEditEntries", typeof(bool), typeof(pagTimesheetView), new PropertyMetadata(false));
+
+
 
         #endregion
 
@@ -55,6 +80,8 @@ namespace OrganisationBitches.Views.Pages
             DataHandler.TimesheetEntriesChanged += new ViewModels.EventHandler(TimesheetEntriesChangedHandler);
             dgTimesheets.SelectedItem = DataHandler.teSelectedTimesheetEntry;
             DataHandler.SelectedTimesheetEntryChanged += new ViewModels.EventHandler(SelectedTimesheetEntryChanged);
+            DataHandler.UserChanged += new ViewModels.EventHandler(UserChanged);
+            UserChanged();
         }
 
         private void TimesheetEntriesChangedHandler()
@@ -65,6 +92,20 @@ namespace OrganisationBitches.Views.Pages
         private void SelectedTimesheetEntryChanged()
         {
             dgTimesheets.SelectedItem = DataHandler.teSelectedTimesheetEntry;
+        }
+
+        private void UserChanged()
+        {
+            if (DataHandler.pmSelectedPerson != null)
+            {
+                CanEditEntries = DataHandler.pmSelectedPerson.UserLevel.CanEditAllUsersData;
+                PageVisible = true;
+            }
+            else
+            {
+                CanEditEntries = false;
+                PageVisible = false;
+            }
         }
 
         #region Click Event Handlers

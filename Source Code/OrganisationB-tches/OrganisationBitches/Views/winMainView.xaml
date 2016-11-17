@@ -17,6 +17,7 @@
         <ListBox Name="lbxPageNavigation" SelectionMode="Single" Grid.Row="0" ItemsSource="{Binding ocPages}" ScrollViewer.VerticalScrollBarVisibility="Disabled"
                  SelectionChanged="ListBox_SelectionChanged" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="Transparent"
                      DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}}">
+            <!--
             <ListBox.Style>
                 <Style TargetType="ListBox">
                     <Setter Property="Visibility" Value="Hidden"/>
@@ -27,6 +28,7 @@
                     </Style.Triggers>
                 </Style>
             </ListBox.Style>
+            -->
             <ListBox.ItemContainerStyle>
                 <Style TargetType="ListBoxItem">
                     <Setter Property="Background" Value="Transparent"/>
@@ -46,6 +48,12 @@
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding PageVisible, diag:PresentationTraceSources.TraceLevel=High}" Value="true">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBox.ItemsPanel>
