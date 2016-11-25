@@ -48,12 +48,14 @@
                             </ControlTemplate>
                         </Setter.Value>
                     </Setter>
+                    <!--
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding PageVisible, diag:PresentationTraceSources.TraceLevel=High}" Value="true">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
+                    -->
                 </Style>
             </ListBox.ItemContainerStyle>
             <ListBox.ItemsPanel>

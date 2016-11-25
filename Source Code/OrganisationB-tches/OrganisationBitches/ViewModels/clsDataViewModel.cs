@@ -157,6 +157,36 @@ namespace OrganisationBitches.ViewModels
             UpdateTimesheetEntries(entry);
         }
 
+        private static void InsertRoster()
+        {
+
+        }
+
+        private static void InsertRosterEntries()
+        {
+
+        }
+
+        private static void DeleteRoster()
+        {
+
+        }
+
+        private static void DeleteRosterEntries()
+        {
+
+        }
+
+        private static void UpdateRoster()
+        {
+
+        }
+
+        private static void UpdateRosterEntries()
+        {
+
+        }
+
         #endregion
 
         #region Public Methods

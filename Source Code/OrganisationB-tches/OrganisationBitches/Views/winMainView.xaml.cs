@@ -29,29 +29,11 @@ namespace OrganisationBitches.Views
             DataContext = this;
 
             pgTimesheetView = new pagTimesheetView();
+            pgRosterView = new pagRostersView();
             pgPersonsView = new pagPersonsView();
             pgExerciseView = new pagExerciseView();
         }
-
-        #region Event Handlers
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            // Add Pages to Pages List
-            ocPages = new ObservableCollection<Page>();
-            ocPages.Add(pgTimesheetView);
-            ocPages.Add(pgExerciseView);
-            ocPages.Add(pgPersonsView);
-
-            // Subscribed to UserChangedEvent
-            DataHandler.UserChanged += new ViewModels.EventHandler(PersonsChangedHandler);
-            // Initialise DataHandler
-            DataHandler.Initialise();
-        }
-
-
-        #endregion
-
+        
         #region Properties
 
         public pagExerciseView pgExerciseView { get; set; }
@@ -59,6 +41,8 @@ namespace OrganisationBitches.Views
         public pagTimesheetView pgTimesheetView { get; set; }
 
         public pagPersonsView pgPersonsView { get; set; }
+
+        public pagRostersView pgRosterView { get; set; }
 
 
         #endregion
@@ -93,8 +77,7 @@ namespace OrganisationBitches.Views
 
 
         #endregion
-
-
+        
         #region Click Event Handlers
 
         private void btnTimesheet_Click(object sender, RoutedEventArgs e)
@@ -125,6 +108,20 @@ namespace OrganisationBitches.Views
 
         #region Event Handlers
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Add Pages to Pages List
+            ocPages = new ObservableCollection<Page>();
+            ocPages.Add(pgTimesheetView);
+            ocPages.Add(pgRosterView);
+            ocPages.Add(pgExerciseView);
+            ocPages.Add(pgPersonsView);
+
+            // Subscribed to UserChangedEvent
+            DataHandler.UserChanged += new ViewModels.EventHandler(PersonsChangedHandler);
+            // Initialise DataHandler
+            DataHandler.Initialise();
+        }
 
         private void PersonsChangedHandler()
         {

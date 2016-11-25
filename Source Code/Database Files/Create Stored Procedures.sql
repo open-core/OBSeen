@@ -24,3 +24,12 @@ BEGIN
 --    SELECT row_count() INTO AffectedRows;
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE procedure spUpdateRosterEntriesforRoster (IN ID int, IN RosterID int, IN UserID int, IN EntryDate Date, IN StartTime Time, IN EndTime Time, IN UnpaidTimeTicks BIGINT, IN PaidTimeTicks BIGINT)
+BEGIN
+	INSERT INTO RosterEntries(ID,RosterID,UserID,EntryDate,StartTime,EndTime,UnpaidTimeTicks,PaidTimeTicks)
+    VALUES (ID,RosterID,UserID,EntryDate,StartTime,EndTime,UnpaidTimeTicks,PaidTimeTicks)
+    ON duplicate key update RosterID = RosterID, UserID = UserID, EntryDate = EntryDate, StartTime = StartTime, EndTime = EndTime, UnpaidTimeTicks = UnpaidTimeTicks, PaidTimeTicks = PaidTimeTicks;
+END //
+DELIMITER ;

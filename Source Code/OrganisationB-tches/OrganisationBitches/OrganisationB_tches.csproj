@@ -66,6 +66,7 @@
     <Compile Include="Models\clsDTOModels.cs" />
     <Compile Include="Models\clsExceptionModels.cs" />
     <Compile Include="Models\clsExerciseModels.cs" />
+    <Compile Include="Models\clsRosterModels.cs" />
     <Compile Include="Models\clsTimesheetModels.cs" />
     <Compile Include="ViewModels\clsConverterViewModels.cs" />
     <Compile Include="ViewModels\clsDataViewModel.cs" />
@@ -77,6 +78,9 @@
     </Compile>
     <Compile Include="Views\Pages\pagPersonsView.xaml.cs">
       <DependentUpon>pagPersonsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\pagRostersView.xaml.cs">
+      <DependentUpon>pagRostersView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Pages\pagTimesheetView.xaml.cs">
       <DependentUpon>pagTimesheetView.xaml</DependentUpon>
@@ -100,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Pages\pagPersonsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\pagRostersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,31 @@
+﻿<Page x:Class="OrganisationBitches.Views.Pages.pagRostersView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OrganisationBitches.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="Rosters" Loaded="Page_Loaded">
+
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="4" HorizontalAlignment="Stretch" Grid.Row="0" VerticalAlignment="Center">
+            <Button Name="btnNewRoster" Style="{StaticResource styButtonStandard}" Click="btnNewRoster_Click">
+                New Roster
+            </Button>
+            <Button Name="btnEditRoster" Style="{StaticResource styButtonStandard}" Click="btnEditRoster_Click">
+                Edit Roster
+            </Button>
+            <Button Name="btnSaveRoster" Style="{StaticResource styButtonStandard}" Click="btnSaveRoster_Click">
+                Save Roster
+            </Button>
+            <Button Name="btnDeleteRoster" Style="{StaticResource styButtonStandard}" Click="btnDeleteRoster_Click">
+                Delete Roster
+            </Button>
+        </UniformGrid>
+    </Grid>
+</Page>
