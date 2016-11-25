@@ -263,4 +263,43 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+--
+-- Table structure for table `RosterEntries`
+--
+
+DROP TABLE IF EXISTS `RosterEntries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `RosterEntries` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `RosterID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `EntryDate` date NOT NULL,
+  `StartTime` time NOT NULL,
+  `EndTime` time NOT NULL,
+  `UnpaidTimeTicks` bigint(20) NOT NULL,
+  `PaidTimeTicks` bigint(20) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `fk_RostersRosterEntries_idx` (`RosterID`),
+  KEY `fk_PersonsRosterEntries_idx` (`UserID`),
+  CONSTRAINT `fk_RostersRosterEntries` FOREIGN KEY (`RosterID`) REFERENCES `Rosters` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_PersonsRosterEntries` FOREIGN KEY (`UserID`) REFERENCES `Persons` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Rosters`
+--
+
+DROP TABLE IF EXISTS `Rosters`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Rosters` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `StartDate` date NOT NULL,
+  `EndDate` date NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 -- Dump completed on 2016-11-10 13:24:22
