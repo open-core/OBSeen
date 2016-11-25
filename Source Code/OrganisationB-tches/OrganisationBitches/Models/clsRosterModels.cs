@@ -52,6 +52,54 @@ namespace OrganisationBitches.Models
             }
         }
 
+        private double? _allocatedPermanentHours;
+
+        public double? AllocatedPermanentHours
+        {
+            get { return _allocatedPermanentHours; }
+            set
+            {
+                _allocatedPermanentHours = value;
+                OnPropertyChanged("AllocatedPermanentHours");
+            }
+        }
+
+        private double? _allocatedCasualHours;
+
+        public double? AllocatedCasualHours
+        {
+            get { return _allocatedCasualHours; }
+            set
+            {
+                _allocatedCasualHours = value;
+                OnPropertyChanged("AllocatedCasualHours");
+            }
+        }
+
+        private double? _allocatedHours;
+
+        public double? AllocatedHours
+        {
+            get { return _allocatedHours; }
+            set
+            {
+                _allocatedHours = value;
+                OnPropertyChanged("AllocatedHours");
+            }
+        }
+
+        private double? _totalHours;
+
+        public double? TotalHours
+        {
+            get { return _totalHours; }
+            set
+            {
+                _totalHours = value;
+                OnPropertyChanged("TotalHours");
+            }
+        }
+
     }
 
     public class RosterEntryModel : INotifyPropertyChanged

@@ -15,17 +15,103 @@
         </Grid.RowDefinitions>
         <UniformGrid Columns="4" HorizontalAlignment="Stretch" Grid.Row="0" VerticalAlignment="Center">
             <Button Name="btnNewRoster" Style="{StaticResource styButtonStandard}" Click="btnNewRoster_Click">
-                New Roster
+                New
             </Button>
             <Button Name="btnEditRoster" Style="{StaticResource styButtonStandard}" Click="btnEditRoster_Click">
-                Edit Roster
+                Open
             </Button>
             <Button Name="btnSaveRoster" Style="{StaticResource styButtonStandard}" Click="btnSaveRoster_Click">
-                Save Roster
+                Save
             </Button>
             <Button Name="btnDeleteRoster" Style="{StaticResource styButtonStandard}" Click="btnDeleteRoster_Click">
-                Delete Roster
+                Delete
             </Button>
         </UniformGrid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Grid.Column="0" Name="dgRosters" ItemsSource="{Binding ocRosters}" Margin="5">
+
+            </DataGrid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <UniformGrid Grid.Row="0" Columns="3">
+                    <UniformGrid VerticalAlignment="Stretch" Rows="4">
+                        <Label Style="{StaticResource styLabelSmallNoMargin}">Start Date</Label>
+                        <DatePicker Name="dpStartDate" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Margin="5" Padding="5,0,5,0"></DatePicker>
+                        <Label Style="{StaticResource styLabelSmallNoMargin}">End Date</Label>
+                        <DatePicker Name="dpEndDate" VerticalAlignment="Stretch" VerticalContentAlignment="Center" Margin="5" Padding="5,0,5,0"></DatePicker>
+                    </UniformGrid>
+                    <Border Style="{StaticResource styBorderStandard}" Padding="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Style="{StaticResource styLabelSmallNoMargin}">Hour Allocations</Label>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource styLabelExSmallNoMargin}">Permanent</Label>
+                                <TextBox Grid.Row="0" Grid.Column="1" Margin="2" Name="txtPermAllocHours" TextChanged="txtPermAllocHours_TextChanged"></TextBox>
+                                <Label Grid.Row="0" Grid.Column="2" Content="{Binding dblPermAllocHoursDiff}" Style="{StaticResource styLabelExSmallNoMargin}"></Label>
+
+                                <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource styLabelExSmallNoMargin}">Casual</Label>
+                                <TextBox Grid.Row="1" Grid.Column="1" Margin="2" Name="txtCasAllocHours" TextChanged="txtCasAllocHours_TextChanged"></TextBox>
+                                <Label Grid.Row="1" Grid.Column="2" Content="{Binding dblCasAllocHoursDiff}" Style="{StaticResource styLabelExSmallNoMargin}"></Label>
+
+                                <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource styLabelExSmallNoMargin}">Total</Label>
+                                <TextBox Grid.Row="2" Grid.Column="1" Margin="2" Name="txtTotAllocHours" TextChanged="txtTotAllocHours_TextChanged"></TextBox>
+                                <Label Grid.Row="2" Grid.Column="2" Content="{Binding dblTotalAllocHoursDiff}" Style="{StaticResource styLabelExSmallNoMargin}"></Label>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <Border Style="{StaticResource styBorderStandard}" Padding="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Style="{StaticResource styLabelSmallNoMargin}">Hour Totals</Label>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource styLabelExSmallNoMargin}">Permanent</Label>
+                                <Label Grid.Row="0" Grid.Column="1" Name="lblPermHoursTotal" Style="{StaticResource styLabelExSmallNoMargin}"></Label>
+
+                                <Label Grid.Row="1" Grid.Column="0" Style="{StaticResource styLabelExSmallNoMargin}">Casual</Label>
+                                <Label Grid.Row="1" Grid.Column="1" Name="lblCasHoursTotal" Style="{StaticResource styLabelExSmallNoMargin}"></Label>
+
+                                <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource styLabelExSmallNoMargin}">Total</Label>
+                                <Label Grid.Row="2" Grid.Column="1" Name="lblHoursTotal" Style="{StaticResource styLabelExSmallNoMargin}"></Label>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </UniformGrid>
+                <Border Grid.Row="1" Style="{StaticResource styBorderStandard}">
+                    <TextBlock Style="{StaticResource styTextBlockStandardWithWrap}">Need to figure out a nice way of presenting Roster data here</TextBlock>
+                </Border>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

@@ -298,8 +298,53 @@ CREATE TABLE `Rosters` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `StartDate` date NOT NULL,
   `EndDate` date NOT NULL,
+  `AllocatedPermanentHours` double,
+  `AllocatedCasualHours` double,
+  `AllocatedHours` double,
+  `TotalHours` double,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `PersonEmploymentLevels`
+--
+
+DROP TABLE IF EXISTS `PersonEmploymentLevels`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `PersonEmploymentLevels` (
+  `PersonID` int(11) NOT NULL,
+  `EmploymentLevelID` int(11) NOT NULL,
+  PRIMARY KEY (`PersonID`),
+  KEY `fk_EmployLvlPersonEmployLvl_idx` (`EmploymentLevelID`),
+  CONSTRAINT `fk_PersonPersonEmployLvl` FOREIGN KEY (`PersonID`) REFERENCES `Persons` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_EmployLvlPersonEmployLvl` FOREIGN KEY (`EmploymentLevelID`) REFERENCES `EmploymentLevels` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `EmploymentLevels`
+--
+
+DROP TABLE IF EXISTS `EmploymentLevels`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `EmploymentLevels` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `EmploymentLevelName` varchar(45) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `EmploymentLevels`
+--
+
+LOCK TABLES `EmploymentLevels` WRITE;
+/*!40000 ALTER TABLE `EmploymentLevels` DISABLE KEYS */;
+INSERT INTO `EmploymentLevels` VALUES (1,'Permanent'),(2,'Casual');
+/*!40000 ALTER TABLE `EmploymentLevels` ENABLE KEYS */;
+UNLOCK TABLES;
 
 -- Dump completed on 2016-11-10 13:24:22

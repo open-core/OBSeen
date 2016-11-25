@@ -80,6 +80,29 @@ namespace OrganisationBitches.Models
         }
     }
 
+    public class EmployeeModel : PersonModel
+    {
+        private EmploymentLevelModel _employmentLevel;
+
+        public EmploymentLevelModel EmploymentLevel
+        {
+            get { return _employmentLevel; }
+            set
+            {
+                _employmentLevel = value;
+                OnPropertyChanged("EmploymentLevel");
+            }
+        }
+
+    }
+
+    public class EmploymentLevelModel
+    {
+        public int ID { get; set; }
+
+        public string EmploymentLevelName { get; set; }
+    }
+
     public class UserLevelModel
     {
         public int ID { get; set; }

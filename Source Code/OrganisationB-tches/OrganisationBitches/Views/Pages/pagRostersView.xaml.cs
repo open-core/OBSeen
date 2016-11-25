@@ -1,6 +1,8 @@
-﻿using OrganisationBitches.ViewModels;
+﻿using OrganisationBitches.Models;
+using OrganisationBitches.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,6 +52,57 @@ namespace OrganisationBitches.Views.Pages
         public static readonly DependencyProperty CanEditEntriesProperty =
             DependencyProperty.Register("CanEditEntries", typeof(bool), typeof(pagRostersView), new PropertyMetadata(false));
 
+
+
+        public ObservableCollection<RosterModel> ocRosters
+        {
+            get { return (ObservableCollection<RosterModel>)GetValue(ocRostersProperty); }
+            set { SetValue(ocRostersProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ocRosters.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ocRostersProperty =
+            DependencyProperty.Register("ocRosters", typeof(ObservableCollection<RosterModel>), typeof(pagRostersView), new PropertyMetadata(null));
+
+
+
+
+
+        public double? dblPermAllocHoursDiff
+        {
+            get { return (double?)GetValue(dblPermAllocHoursDiffProperty); }
+            set { SetValue(dblPermAllocHoursDiffProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for dblPermAllocHoursDiff.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty dblPermAllocHoursDiffProperty =
+            DependencyProperty.Register("dblPermAllocHoursDiff", typeof(double?), typeof(pagRostersView), new PropertyMetadata(null));
+
+
+
+        public double? dblCasAllocHoursDiff
+        {
+            get { return (double?)GetValue(dblCasAllocHoursDiffProperty); }
+            set { SetValue(dblCasAllocHoursDiffProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for dblCasAllocHoursDiff.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty dblCasAllocHoursDiffProperty =
+            DependencyProperty.Register("dblCasAllocHoursDiff", typeof(double?), typeof(pagRostersView), new PropertyMetadata(null));
+
+
+
+        public double? dblTotalAllocHoursDiff
+        {
+            get { return (double?)GetValue(dblTotalAllocHoursDiffProperty); }
+            set { SetValue(dblTotalAllocHoursDiffProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for dblTotalAllocHoursDiff.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty dblTotalAllocHoursDiffProperty =
+            DependencyProperty.Register("dblTotalAllocHoursDiff", typeof(double?), typeof(pagRostersView), new PropertyMetadata(null));
+        
+
         #endregion
 
         #region Event Handlers
@@ -73,7 +126,22 @@ namespace OrganisationBitches.Views.Pages
             UserChanged();
         }
 
-        #endregion
+        private void txtPermAllocHours_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtCasAllocHours_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void txtTotAllocHours_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        #region Click Events
 
         private void btnNewRoster_Click(object sender, RoutedEventArgs e)
         {
@@ -94,5 +162,10 @@ namespace OrganisationBitches.Views.Pages
         {
 
         }
+
+        #endregion
+
+        #endregion
+
     }
 }
