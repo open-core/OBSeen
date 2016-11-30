@@ -13,15 +13,72 @@
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Name="btnSave" Click="btnSave_Click">Save</Button>
-            <Button Name="btnCurrentChart" Click="btnCurrentChart_Click">Current Chart</Button>
-            <DatePicker Name="dpChartDate" VerticalAlignment="Center" SelectedDateChanged="dpChartDate_SelectedDateChanged"></DatePicker>
-        </StackPanel>
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <DataGrid Name="dgExerciseLog">
-                
-            </DataGrid>
-        </ScrollViewer>
+        <ListBox Name="lbxSelection" SelectionMode="Single" Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Disabled" 
+                 HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="Transparent"
+                 SelectionChanged="lbxSelection_SelectionChanged" ItemsSource="{Binding ocSelections}">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border Name="_Border"
+                                Padding="2"
+                                SnapsToDevicePixels="true">
+                                    <ContentPresenter />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="true">
+                                        <Setter TargetName="_Border" Property="Background" Value="#FF1e8acb"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="2" Background="Transparent"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Style="{StaticResource styBorderStandard}" Background="Transparent" HorizontalAlignment="Stretch" Margin="10">
+                        <TextBlock Text="{Binding}" Style="{StaticResource styTextBlockStandard}" Background="Transparent" HorizontalAlignment="Center"/>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <DockPanel Grid.Row="1">
+            <Border Name="bdrSheets" Style="{StaticResource styBorderStandard}">
+
+            </Border>
+            <Border Name="bdrPlanner" Style="{StaticResource styBorderStandard}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="3*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Style="{StaticResource styLabelSmallNoMargin}" Content="Planner"></Label>
+                    <DockPanel Grid.Row="1">
+                        <Label Style="{StaticResource styLabelExSmallNoMargin}" Content="Name:"></Label>
+                        <TextBox Name="tbxPlanName"></TextBox>
+                    </DockPanel>
+                    <Border Grid.Row="2" Style="{StaticResource styBorderThin}">
+
+                    </Border>
+                    <Border Grid.Row="3" Style="{StaticResource styBorderThin}">
+
+                    </Border>
+                </Grid>
+            </Border>
+            <Border Name="bdrProgress" Style="{StaticResource styBorderStandard}">
+
+            </Border>
+        </DockPanel>
     </Grid>
 </Page>

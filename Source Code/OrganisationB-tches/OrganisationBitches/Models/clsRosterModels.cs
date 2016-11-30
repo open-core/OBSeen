@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace OrganisationBitches.Models
 {
@@ -216,6 +218,114 @@ namespace OrganisationBitches.Models
             {
                 _paidTime = value;
                 OnPropertyChanged("PaidTime");
+            }
+        }
+
+    }
+
+    public class RosterDisplayModel : RosterModel
+    {
+        private ObservableCollection<DataGridColumn> _columnCollection;
+
+        public ObservableCollection<DataGridColumn> ColumnCollection
+        {
+            get { return _columnCollection; }
+            set { _columnCollection = value; }
+        }
+
+        private ObservableCollection<RosterPersonModel> _rosterPersons;
+
+        public ObservableCollection<RosterPersonModel> RosterPersons
+        {
+            get { return _rosterPersons; }
+            set { _rosterPersons = value; }
+        }
+
+    }
+
+    public class RosterPersonModel : PersonModel
+    {
+        private ObservableCollection<RosterDayEntryModel> _rosterDayEntries;
+
+        public ObservableCollection<RosterDayEntryModel> RosterDayEntries
+        {
+            get { return _rosterDayEntries; }
+            set { _rosterDayEntries = value; }
+        }
+
+    }
+
+    public class RosterDayEntryModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        private DateTime _entryDate;
+
+        public DateTime EntryDate
+        {
+            get { return _entryDate; }
+            set
+            {
+                _entryDate = value;
+                OnPropertyChanged("EntryDate");
+            }
+        }
+
+        private DateTime _startTime;
+
+        public DateTime StartTime
+        {
+            get { return _startTime; }
+            set
+            {
+                _startTime = value;
+                OnPropertyChanged("StartTime");
+            }
+        }
+
+        private DateTime _endTime;
+
+        public DateTime EndTime
+        {
+            get { return _endTime; }
+            set
+            {
+                _endTime = value;
+                OnPropertyChanged("EndTime");
+            }
+        }
+
+        public long? BreakTicks
+        {
+            get { return (Break == null) ? (long?)null : Break.Value.Ticks; }
+            set
+            {
+                if (value == null)
+                    Break = new TimeSpan(0);
+                else
+                    Break = new TimeSpan((long)value);
+            }
+        }
+
+
+        private TimeSpan? _break;
+
+        public TimeSpan? Break
+        {
+            get { return _break; }
+            set
+            {
+                _break = value;
+                OnPropertyChanged("Break");
             }
         }
 

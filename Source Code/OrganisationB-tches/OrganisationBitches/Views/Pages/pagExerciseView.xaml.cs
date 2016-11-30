@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using OrganisationBitches.Models;
 using OrganisationBitches.ViewModels;
+using System.Collections.ObjectModel;
 
 namespace OrganisationBitches.Views.Pages
 {
@@ -28,41 +29,20 @@ namespace OrganisationBitches.Views.Pages
             DataContext = this;
         }
 
-        #region Page Element Event Handlers
-
-        private void btnSave_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnCurrentChart_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnViewChart_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void cbtnCalender_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void dpChartDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            DataHandler.UpdateExerciseDate(dpChartDate.SelectedDate);
-        }
-
-        #endregion
+        
 
         #region Event Handlers
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            bdrPlanner.Visibility = Visibility.Collapsed;
+            bdrSheets.Visibility = Visibility.Collapsed;
+            bdrProgress.Visibility = Visibility.Collapsed;
+            ocSelections.Add("Sheets");
+            ocSelections.Add("Planner");
+            ocSelections.Add("Progress");
+
             ChartDate = DataHandler.dtExerciseDate;
-            dpChartDate.SelectedDate = ChartDate;
             // Subscribe to the Chart Date Changed Event
             DataHandler.ExerciseDateChanged += new ViewModels.EventHandler(ChartDateChangedHandler);
         }
@@ -70,7 +50,6 @@ namespace OrganisationBitches.Views.Pages
         public void ChartDateChangedHandler()
         {
             ChartDate = DataHandler.dtExerciseDate;
-            dpChartDate.SelectedDate = ChartDate;
 
             DataHandler.UserChanged += new ViewModels.EventHandler(UserChanged);
             UserChanged();
@@ -87,6 +66,36 @@ namespace OrganisationBitches.Views.Pages
                 PageVisible = false;
             }
         }
+
+        #region Click Events
+
+
+        private void lbxSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch ((string)lbxSelection.SelectedItem)
+            {
+                case "Sheets":
+                    bdrPlanner.Visibility = Visibility.Collapsed;
+                    bdrProgress.Visibility = Visibility.Collapsed;
+                    bdrSheets.Visibility = Visibility.Visible;
+                    break;
+                case "Planner":
+                    bdrSheets.Visibility = Visibility.Collapsed;
+                    bdrProgress.Visibility = Visibility.Collapsed;
+                    bdrPlanner.Visibility = Visibility.Visible;
+                    break;
+                case "Progress":
+                    bdrSheets.Visibility = Visibility.Collapsed;
+                    bdrPlanner.Visibility = Visibility.Collapsed;
+                    bdrProgress.Visibility = Visibility.Visible;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+        #endregion
 
         #endregion
 
@@ -126,6 +135,20 @@ namespace OrganisationBitches.Views.Pages
         // Using a DependencyProperty as the backing store for SelectedExerciseChart.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SelectedExerciseChartProperty =
             DependencyProperty.Register("SelectedExerciseChart", typeof(ExerciseChartModel), typeof(pagExerciseView), new PropertyMetadata(new ExerciseChartModel()));
+
+
+
+        public ObservableCollection<string> ocSelections
+        {
+            get { return (ObservableCollection<string>)GetValue(ocSelectionsProperty); }
+            set { SetValue(ocSelectionsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for ocSelections.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ocSelectionsProperty =
+            DependencyProperty.Register("ocSelections", typeof(ObservableCollection<string>), typeof(pagExerciseView), new PropertyMetadata(new ObservableCollection<string>()));
+
+
 
         #endregion
 

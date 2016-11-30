@@ -86,6 +86,11 @@
         <Setter Property="Padding" Value="5"/>
     </Style>
 
+    <Style x:Key="styBorderThin" TargetType="Border" BasedOn="{StaticResource styBorderStandard}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+
     <Style x:Key="styToggleListBox" TargetType="UniformGrid">
         <Setter Property="Background" Value="Transparent"/>
         <Style.Triggers>
@@ -93,5 +98,16 @@
                 <Setter Property="Background" Value="#FF1e8acb"/>
             </DataTrigger>
         </Style.Triggers>
+    </Style>
+
+    <Style x:Key="styDataGridTransparent" TargetType="DataGrid">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="ColumnHeaderStyle" Value="{StaticResource styDataGridColumnStyle}"/>
+    </Style>
+
+    <Style x:Key="styDataGridColumnStyle" TargetType="DataGridColumnHeader">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White"/>
     </Style>
 </ResourceDictionary>

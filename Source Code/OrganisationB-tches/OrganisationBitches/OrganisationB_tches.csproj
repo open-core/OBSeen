@@ -70,6 +70,7 @@
     <Compile Include="Models\clsTimesheetModels.cs" />
     <Compile Include="ViewModels\clsConverterViewModels.cs" />
     <Compile Include="ViewModels\clsDataViewModel.cs" />
+    <Compile Include="ViewModels\clsVisualViewModels.cs" />
     <Compile Include="Views\Pages\pagExerciseView.xaml.cs">
       <DependentUpon>pagExerciseView.xaml</DependentUpon>
     </Compile>

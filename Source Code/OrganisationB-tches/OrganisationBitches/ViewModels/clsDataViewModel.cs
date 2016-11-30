@@ -20,6 +20,8 @@ namespace OrganisationBitches.ViewModels
         public static event EventHandler UserChanged;
         public static event EventHandler TimesheetEntriesChanged;
         public static event EventHandler SelectedTimesheetEntryChanged;
+        public static event EventHandler RostersChanged;
+        public static event EventHandler SelectedRosterChanged;
 
         #endregion
 
@@ -51,6 +53,10 @@ namespace OrganisationBitches.ViewModels
         public static TimesheetEntryModel teSelectedTimesheetEntry { get; set; }
 
         public static PersonModel pmSelectedPerson { get; set; }
+
+        public static ObservableCollection<RosterModel> ocRosters { get; set; }
+
+        public static RosterDisplayModel rdSelectedRoster { get; set; }
 
         #endregion
 
@@ -155,6 +161,16 @@ namespace OrganisationBitches.ViewModels
             entry.Add(timesheetEntry);
 
             UpdateTimesheetEntries(entry);
+        }
+
+        private static void GetAllRosters()
+        {
+
+        }
+
+        private static void GetSelectedRosterDisplayModel(RosterModel roster)
+        {
+
         }
 
         private static void InsertRoster()
@@ -334,6 +350,22 @@ namespace OrganisationBitches.ViewModels
             if(SelectedTimesheetEntryChanged != null)
             {
                 SelectedTimesheetEntryChanged.Invoke();
+            }
+        }
+
+        public static void GetRosters()
+        {
+            GetAllRosters();
+        }
+
+        public static void UpdateSelectedRoster(RosterModel selectedRoster)
+        {
+            GetSelectedRosterDisplayModel(selectedRoster);
+
+            // Invoke Event so all views can be updated
+            if (SelectedRosterChanged != null)
+            {
+                SelectedRosterChanged.Invoke();
             }
         }
 

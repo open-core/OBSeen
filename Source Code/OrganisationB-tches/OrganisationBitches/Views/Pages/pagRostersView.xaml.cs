@@ -67,6 +67,18 @@ namespace OrganisationBitches.Views.Pages
 
 
 
+        public RosterDisplayModel SelectedRosterDisplayModel
+        {
+            get { return (RosterDisplayModel)GetValue(SelectedRosterDisplayModelProperty); }
+            set { SetValue(SelectedRosterDisplayModelProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SelectedRosterDisplayModel.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SelectedRosterDisplayModelProperty =
+            DependencyProperty.Register("SelectedRosterDisplayModel", typeof(RosterDisplayModel), typeof(pagRostersView), new PropertyMetadata(null));
+
+
+
 
         public double? dblPermAllocHoursDiff
         {
