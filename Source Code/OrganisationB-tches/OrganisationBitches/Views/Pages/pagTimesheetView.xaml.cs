@@ -129,14 +129,20 @@ namespace OrganisationBitches.Views.Pages
         {
             DataHandler.ClockOut();
         }
-
-        #endregion
-
-        #endregion
-
         private void dgTimesheets_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataHandler.UpdateSelectedTimesheetEntry(dgTimesheets.SelectedItem as TimesheetEntryModel);
         }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #endregion
+
+
     }
 }
