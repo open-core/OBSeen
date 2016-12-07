@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="OBSeen.Views.Controls.TimePicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OBSeen.Views.Controls"
+             mc:Ignorable="d" Loaded="UserControl_Loaded"
+             d:DesignHeight="100" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="txtHour" Text="{Binding hour}" Grid.Column="0" MaxLength="2" PreviewTextInput="txtHour_PreviewTextInput"/>
+        <UniformGrid Columns="1" Grid.Column="1">
+            <Button Name="btnHourUp" Click="btnHourUp_Click" Style="{StaticResource styButtonSmall}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <Image Source="/OBSeen;component/Views/Assets/ArrowUpWhite.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="16" Height="16"/>
+            </Button>
+            <Button Name="btnHourDown" Click="btnHourDown_Click" Style="{StaticResource styButtonSmall}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <Image Source="/OBSeen;component/Views/Assets/ArrowDownWhite.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="16" Height="16"/>
+            </Button>
+        </UniformGrid>
+        <TextBox Name="txtMinute" Text="{Binding minute}" Grid.Column="2" MaxLength="2" PreviewTextInput="txtMinute_PreviewTextInput"/>
+        <UniformGrid Columns="1" Grid.Column="3">
+            <Button Name="btnMinUp" Click="btnMinUp_Click"  Style="{StaticResource styButtonSmall}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <Image Source="/OBSeen;component/Views/Assets/ArrowUpWhite.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="16" Height="16"/>
+            </Button>
+            <Button Name="btnMinDown" Click="btnMinDown_Click"  Style="{StaticResource styButtonSmall}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                <Image Source="/OBSeen;component/Views/Assets/ArrowDownWhite.png" VerticalAlignment="Center" HorizontalAlignment="Center" Width="16" Height="16"/>
+            </Button>
+        </UniformGrid>
+    </Grid>
+</UserControl>

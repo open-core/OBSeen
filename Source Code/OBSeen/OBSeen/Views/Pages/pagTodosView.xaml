@@ -1,0 +1,27 @@
+﻿<Page x:Class="OBSeen.Views.Pages.pagTodosView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OBSeen.Views.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="300"
+      Title="Todo List" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <UniformGrid Columns="2">
+                <Button Name="btnAddItem" Style="{StaticResource styButtonStandard}" Click="btnAddItem_Click">Add</Button>
+                <Label Content="Add" Style="{StaticResource styLabelSmall}"/>
+            </UniformGrid>
+            <UniformGrid Columns="2">
+                <Button Name="btnDeleteItem" Style="{StaticResource styButtonStandard}" Click="btnDeleteItem_Click">Delete</Button>
+                <Label Content="Delete" Style="{StaticResource styLabelSmall}"/>
+            </UniformGrid>
+        </StackPanel>
+    </Grid>
+</Page>
